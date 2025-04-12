@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to Our Cinema</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 36px;
+            color: #FF6347;
+        }
+
+        /* Movie container styles */
+        .movie-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        /* Individual movie card styling */
+        .movie-card {
+            background: linear-gradient(135deg, #2e3a59, #1c2530);
+            border-radius: 15px;
+            overflow: hidden;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease-in-out;
+            cursor: pointer;
+        }
+
+        .movie-card:hover {
+            transform: scale(1.05);
+        }
+
+        .movie-card img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+        }
+
+        .movie-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #FF6347;
+            padding: 15px;
+        }
+
+        .movie-year,
+        .movie-description,
+        .movie-date {
+            padding: 0 15px 15px;
+            font-size: 16px;
+        }
+
+        .movie-year {
+            color: #ccc;
+        }
+
+        .movie-description {
+            color: #aaa;
+            height: 60px;
+            overflow: hidden;
+        }
+
+        .movie-date {
+            color: #dcdcdc;
+            font-style: italic;
+        }
+
+        /* Responsive design for smaller screens */
+        @media (max-width: 768px) {
+            .movie-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .movie-card {
+                width: 80%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2>Welcome to Our Cinema</h2>
+    <div class="movie-container">
+        {% for i in movie %}
+        <div class="movie-card">
+            <img src="{{ q.image.url }}" alt="{{ q.name }}">
+            <div class="movie-title">{{ q.name }}</div>
+            <div class="movie-year">Year: {{ q.year }}</div>
+            <div class="movie-description">{{ q.description }}</div>
+            <div class="movie-date">Release Date: {{ q.date }}</div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
